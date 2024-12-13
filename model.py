@@ -185,6 +185,15 @@ def main():
                 print("구독 유형별:", retention['churn_rates']['subscription'])
                 print("디바이스별:", retention['churn_rates']['device'])
                 
+        print("\n=== 클러스터 분석 결과 ===")
+        cluster_results = analyzer.perform_clustering()
+        print("\n고객 그룹별 평균 특성:")
+        print(cluster_results)
+        
+        cluster_sizes = analyzer.df['Cluster'].value_counts()
+        print("\n클러스터별 고객 수:")
+        print(cluster_sizes)
+                
     except Exception as e:
         print(f"예상치 못한 오류 발생: {str(e)}")
         import traceback
